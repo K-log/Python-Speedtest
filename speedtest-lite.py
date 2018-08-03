@@ -11,6 +11,7 @@ from selenium.webdriver.chrome.options import Options
 
 
 def render_page(url):
+    # Connect to the given URL and return the source code of the page.
     options = Options()
     options.set_headless(headless=True)
     driver = webdriver.Chrome(chrome_options=options)
@@ -26,6 +27,7 @@ def render_page(url):
 
 
 def find_elements(page_source):
+    # Search throught the page's source HTML to find the speed test value.
     try:
         print('Parsing webpage source...')
         soup = BeautifulSoup(page_source, "html.parser")
@@ -35,9 +37,16 @@ def find_elements(page_source):
         speed_value = -1
     return speed_value
 
+def calc_speed(url):
+    # Get the current download three times and average it to get a more accurate value.
+
+    first = int(find_elements(render_page(url)).string)
+    second = int(find_elements(render_page(url)).string)
+    third = int(find_elements(render_page(url)).string)
+
+    return ( (first + second + third) / 3 )
 
 if __name__ == "__main__":
     target_url = "http://fast.com"
-    page = render_page(target_url)
-    contents = find_elements(page)
-    print("Your current download speed is: " + contents.string + "Mbps!")
+    
+    print("Your current download speed is: " + str(calc_speed(target_url)) + "Mbps!")
