@@ -17,3 +17,44 @@ INSTRUCTIONS TO BE PROVIDED
 ## Setup instructions for the stripped down version
 This version is stripped down and simply calculated your download speed and returns the value in the form of an integer.
 
+### Download chromedriver
+Go to the following link and download the version that matches you Operating System. 
+
+[ChromeDriver](https://chromedriver.storage.googleapis.com/index.html?path=2.41/)
+
+Choose a directory to store the chrome driver, preferably one that is already in your PATH like `/bin/`.
+
+If the directory is not in your PATH then you will need to add it with `export PATH=$PATH;My/Directory`. Note that for Windows users you will need to add it to your PATH manually.
+
+### Setting up Python and Pip
+If you already have Python 3.6 or greater and pip for Python 3 then skip this step.
+
+If not then either 
+Ubuntu Linux: `sudo apt-get install Python3`
+Mac with HomeBrew: `brew install Python3`
+or visit [Python.org](https://www.python.org/) for more options.
+
+To check if you have Python and pip installed and that they are the correct version:
+`python -v`
+`pip -v`
+
+If you have multiple versions of Python on your system then you may need to run:
+`python3 -v`
+`pip3 -v`
+
+### Installing Python Dependecies
+The speedtest program requires Selenium and BeautifulSoup4.
+
+To install these, simply run:
+`pip install beautifulsoup4 selenium`
+
+### Testing the program
+
+Clone this repository `git clone https://www.python.org/` .
+
+Run `python speedtest-lite.py`.
+
+You should get a few messages printed to the screen and at the end your current download speed should be printed to the console.
+
+
+
